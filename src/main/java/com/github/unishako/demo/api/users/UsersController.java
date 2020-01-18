@@ -1,11 +1,8 @@
 package com.github.unishako.demo.api.users;
 
-import com.github.unishako.demo.persistence.entity.Users;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,8 +18,14 @@ public class UsersController {
         return usersService.search();
     }
 
+    @PostMapping("/add")
+    @Transactional
+    public void add(@RequestBody UsersDto usersDto) {
+        usersService.add(usersDto);
+    }
+
     @GetMapping("/auth")
-    public void auth(@RequestHeader("Authorization") String authorization) {
+    void auth(@RequestHeader("Authorization") String authorization) {
         usersService.auth(authorization);
     }
 }

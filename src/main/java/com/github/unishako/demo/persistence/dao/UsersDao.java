@@ -2,6 +2,7 @@ package com.github.unishako.demo.persistence.dao;
 
 import com.github.unishako.demo.persistence.entity.Users;
 import org.seasar.doma.Dao;
+import org.seasar.doma.Insert;
 import org.seasar.doma.Select;
 import org.seasar.doma.boot.ConfigAutowireable;
 
@@ -13,4 +14,7 @@ public interface UsersDao {
 
     @Select
     List<Users> selectAll();
+
+    @Insert
+    int insert(Users users);
 }

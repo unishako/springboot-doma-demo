@@ -9,7 +9,9 @@ public class UsersDto {
 
     private BigDecimal id;
 
-    //private String password;
+    private String password;
 
     private String name;
+
+    private String biko;
 }

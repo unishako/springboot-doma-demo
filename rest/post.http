@@ -1,0 +1,9 @@
+POST http://localhost:8080/api/users/add
+Content-Type: application/json
+
+{
+  "id": 4,
+  "name": "矢澤にこ"
+}
+
+###

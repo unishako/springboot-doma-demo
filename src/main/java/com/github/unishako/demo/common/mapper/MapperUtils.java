@@ -18,4 +18,8 @@ public class MapperUtils {
         in.forEach(e -> out.add(modelMapper.map(e, type)));
         return out;
     }
+
+    public <T, U> U convertDto(T in, Class<U> type) {
+        return modelMapper.map(in ,type);
+    }
 }

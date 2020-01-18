@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.UUID;
 
 @Repository
 @RequiredArgsConstructor
@@ -20,5 +21,10 @@ public class UsersRepository {
             throw new NotFoundException();
         }
         return list;
+    }
+
+    int insert(Users users) {
+        users.setPassword(UUID.randomUUID().toString());
+        return usersDao.insert(users);
     }
 }
