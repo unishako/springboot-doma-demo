@@ -9,7 +9,7 @@ import java.util.List;
 
 @ConfigAutowireable
 @Dao
-public interface UserDao {
+public interface UsersDao {
 
     @Select
     List<Users> selectAll();

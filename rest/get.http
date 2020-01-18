@@ -1,0 +1,13 @@
+###
+GET http://localhost:8080/api/users/search
+Accept: application/json
+
+### 1:11111をBase64にエンコード
+GET http://localhost:8080/api/users/auth
+Authorization: Basic MToxMTExMQ==
+
+###
+GET http://localhost:8080/api/users/auth
+Authorization: Basic 1 22222
+
+###

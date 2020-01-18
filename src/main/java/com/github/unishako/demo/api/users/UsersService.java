@@ -1,7 +1,6 @@
 package com.github.unishako.demo.api.users;
 
-import com.github.unishako.demo.persistence.dao.UserDao;
-import com.github.unishako.demo.persistence.entity.Users;
+import com.github.unishako.demo.common.mapper.MapperUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,9 +10,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UsersService {
 
-    private final UserDao userDao;
+    private final UsersRepository usersRepository;
+    private final MapperUtils mapperUtils;
 
-    List<Users> users() {
-        return userDao.selectAll();
+    List<UsersDto> search() {
+        return mapperUtils.convertList(usersRepository.selectAll(), UsersDto.class);
+    }
+
+    void auth(String authorization) {
     }
 }

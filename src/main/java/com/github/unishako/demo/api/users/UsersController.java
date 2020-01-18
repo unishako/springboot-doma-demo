@@ -3,6 +3,7 @@ package com.github.unishako.demo.api.users;
 import com.github.unishako.demo.persistence.entity.Users;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,9 +16,13 @@ public class UsersController {
 
     private final UsersService usersService;
 
-    @GetMapping()
-    public List<Users> users() {
-        return usersService.users();
+    @GetMapping("/search")
+    public List<UsersDto> search() {
+        return usersService.search();
     }
 
+    @GetMapping("/auth")
+    public void auth(@RequestHeader("Authorization") String authorization) {
+        usersService.auth(authorization);
+    }
 }
