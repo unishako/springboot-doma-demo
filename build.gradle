@@ -14,6 +14,13 @@ configurations {
 	}
 }
 
+bootJar {
+	launchScript()
+}
+
+processResources.destinationDir = compileJava.destinationDir
+compileJava.dependsOn processResources
+
 repositories {
 	mavenCentral()
 }
@@ -22,6 +29,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.seasar.doma.boot:doma-spring-boot-starter:1.2.1'
+	implementation 'org.seasar.doma:doma:2.26.0'
+	annotationProcessor 'org.seasar.doma:doma:2.26.0'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'org.postgresql:postgresql'
 	annotationProcessor 'org.projectlombok:lombok'
