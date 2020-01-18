@@ -56,7 +56,6 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
-	//implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.seasar.doma.boot:doma-spring-boot-starter:1.2.1'
 	implementation 'org.seasar.doma:doma:2.26.0'
