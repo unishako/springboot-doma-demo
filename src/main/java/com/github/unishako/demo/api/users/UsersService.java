@@ -5,7 +5,6 @@ import com.github.unishako.demo.persistence.entity.Users;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -22,12 +21,14 @@ public class UsersService {
     }
 
     void add(UsersDto usersDto) {
-        int i = usersRepository.insert(mapperUtils.convertDto(usersDto, Users.class));
+        Users users = mapperUtils.convertDto(usersDto, Users.class);
+        int i = usersRepository.insert(users);
         log.info("結果=" + i);
     }
 
     void addList(List<UsersDto> usersDtoList) {
-        int i[] = usersRepository.batchInsert(mapperUtils.convertList(usersDtoList, Users.class));
+        List<Users> usersList = mapperUtils.convertList(usersDtoList, Users.class);
+        int i[] = usersRepository.batchInsert(usersList);
         log.info("結果=" + i);
     }
 
