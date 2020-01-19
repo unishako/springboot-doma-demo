@@ -41,4 +41,14 @@ class MapperUtilsTest {
         assertEquals("名前1", list2.stream().findFirst().orElse(new UsersDto()).getName());
         assertEquals(new BigDecimal(2), list2.stream().skip(1).findFirst().orElse(new UsersDto()).getId());
     }
+
+    @Test
+    void convertDto() {
+        Users users1 = new Users();
+        users1.setId(new BigDecimal(1));
+        users1.setPassword("パスワード1");
+        users1.setName("名前1");
+        UsersDto usersDto = mapperUtils.convertDto(users1, UsersDto.class);
+        assertEquals("名前1", usersDto.getName());
+    }
 }
