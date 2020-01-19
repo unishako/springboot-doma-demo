@@ -27,7 +27,7 @@ Content-Type: application/json
   "id": 1,
   "name": "西木野真姫",
   "password": "12345",
-  "version": 1
+  "version": 2
 }
 
 ###

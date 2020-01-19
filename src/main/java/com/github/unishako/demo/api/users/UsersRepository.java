@@ -1,6 +1,7 @@
 package com.github.unishako.demo.api.users;
 
 import com.github.unishako.demo.common.exception.NotFoundException;
+import com.github.unishako.demo.common.mapper.MapperUtils;
 import com.github.unishako.demo.persistence.dao.UsersDao;
 import com.github.unishako.demo.persistence.entity.Users;
 import lombok.RequiredArgsConstructor;
@@ -18,16 +19,18 @@ import java.util.UUID;
 public class UsersRepository {
 
     private final UsersDao usersDao;
+    private final MapperUtils mapperUtils;
 
-    List<Users> selectAll() {
+    List<UsersDto> selectAll() {
         List<Users> list = usersDao.selectAll();
         if (list.size() == 0) {
             throw new NotFoundException();
         }
-        return list;
+        return mapperUtils.convertList(list, UsersDto.class);
     }
 
-    int insert(Users users) {
+    int insert(UsersDto usersDto) {
+        Users users = mapperUtils.convertDto(usersDto, Users.class);
         users.setPassword(UUID.randomUUID().toString());
         LocalDateTime now = LocalDateTime.now();
         users.setCreateDate(now);
@@ -35,7 +38,8 @@ public class UsersRepository {
         return usersDao.insert(users);
     }
 
-    int[] batchInsert(List<Users> usersList) {
+    int[] batchInsert(List<UsersDto> usersDtoList) {
+        List<Users> usersList = mapperUtils.convertList(usersDtoList, Users.class);
         LocalDateTime now = LocalDateTime.now();
         usersList.forEach(e -> {
             e.setPassword(UUID.randomUUID().toString());
@@ -48,10 +52,11 @@ public class UsersRepository {
     /**
      * ユーザ情報の更新
      *
-     * @param users ユーザ情報
+     * @param usersDto ユーザ情報
      * @return 処理件数
      */
-    int update(Users users) {
+    int update(UsersDto usersDto) {
+        Users users = mapperUtils.convertDto(usersDto, Users.class);
         LocalDateTime now = LocalDateTime.now();
         users.setUpdateDate(now);
         return usersDao.update(users);

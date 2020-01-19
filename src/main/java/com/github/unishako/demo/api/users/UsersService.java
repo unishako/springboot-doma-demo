@@ -1,7 +1,5 @@
 package com.github.unishako.demo.api.users;
 
-import com.github.unishako.demo.common.mapper.MapperUtils;
-import com.github.unishako.demo.persistence.entity.Users;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Service;
@@ -14,27 +12,23 @@ import java.util.List;
 public class UsersService {
 
     private final UsersRepository usersRepository;
-    private final MapperUtils mapperUtils;
 
     List<UsersDto> search() {
-        return mapperUtils.convertList(usersRepository.selectAll(), UsersDto.class);
+        return usersRepository.selectAll();
     }
 
     void add(UsersDto usersDto) {
-        Users users = mapperUtils.convertDto(usersDto, Users.class);
-        int i = usersRepository.insert(users);
+        int i = usersRepository.insert(usersDto);
         log.info("結果=" + i);
     }
 
     void addList(List<UsersDto> usersDtoList) {
-        List<Users> usersList = mapperUtils.convertList(usersDtoList, Users.class);
-        int i[] = usersRepository.batchInsert(usersList);
+        int i[] = usersRepository.batchInsert(usersDtoList);
         log.info("結果=" + i);
     }
 
     void modify(UsersDto usersDto) {
-        Users users = mapperUtils.convertDto(usersDto, Users.class);
-        int i = usersRepository.update(users);
+        int i = usersRepository.update(usersDto);
         log.info("結果=" + i);
     }
 
