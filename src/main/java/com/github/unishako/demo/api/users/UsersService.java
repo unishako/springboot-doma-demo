@@ -32,6 +32,12 @@ public class UsersService {
         log.info("結果=" + i);
     }
 
+    void modify(UsersDto usersDto) {
+        Users users = mapperUtils.convertDto(usersDto, Users.class);
+        int i = usersRepository.update(users);
+        log.info("結果=" + i);
+    }
+
     void auth(String authorization) {
     }
 }

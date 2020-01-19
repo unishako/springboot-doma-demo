@@ -24,6 +24,12 @@ public class UsersController {
         usersService.add(usersDto);
     }
 
+    @PostMapping("/modify")
+    @Transactional
+    public void update(@RequestBody UsersDto usersDto) {
+        usersService.modify(usersDto);
+    }
+
     @PostMapping("/add/list")
     @Transactional
     public void addList(@RequestBody List<UsersDto> usersDtoList) {

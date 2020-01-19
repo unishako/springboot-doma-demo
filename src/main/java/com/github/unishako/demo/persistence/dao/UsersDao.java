@@ -17,7 +17,13 @@ public interface UsersDao {
     @Insert
     int insert(Users users);
 
-    @Update
+    /**
+     * ユーザ情報の更新
+     *
+     * @param users ユーザ情報
+     * @return 処理件数
+     */
+    @Update(excludeNull = true)
     int update(Users users);
 
     @Delete

@@ -4,6 +4,7 @@ import lombok.Data;
 import org.seasar.doma.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -16,6 +17,10 @@ public class Users {
     private String password;
 
     private String name;
+
+    private LocalDateTime createDate;
+
+    private LocalDateTime updateDate;
 
     @Version
     private BigDecimal version;
