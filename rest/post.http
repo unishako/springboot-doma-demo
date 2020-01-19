@@ -1,9 +1,22 @@
+###
 POST http://localhost:8080/api/users/add
 Content-Type: application/json
 
 {
-  "id": 4,
-  "name": "矢澤にこ"
+  "name": "国木田花丸"
 }
+
+###
+POST http://localhost:8080/api/users/add/list
+Content-Type: application/json
+
+[
+  {
+    "name": "矢澤にこ"
+  },
+  {
+    "name": "津島善子"
+  }
+]
 
 ###

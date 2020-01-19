@@ -1,10 +1,7 @@
 package com.github.unishako.demo.persistence.entity;
 
 import lombok.Data;
-import org.seasar.doma.Entity;
-import org.seasar.doma.GeneratedValue;
-import org.seasar.doma.GenerationType;
-import org.seasar.doma.Id;
+import org.seasar.doma.*;
 
 import java.math.BigDecimal;
 
@@ -19,4 +16,10 @@ public class Users {
     private String password;
 
     private String name;
+
+    @Version
+    private BigDecimal version;
+
+    @OriginalStates
+    private Users originalStates;
 }

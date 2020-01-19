@@ -26,6 +26,11 @@ public class UsersService {
         log.info("結果=" + i);
     }
 
+    void addList(List<UsersDto> usersDtoList) {
+        int i[] = usersRepository.batchInsert(mapperUtils.convertList(usersDtoList, Users.class));
+        log.info("結果=" + i);
+    }
+
     void auth(String authorization) {
     }
 }

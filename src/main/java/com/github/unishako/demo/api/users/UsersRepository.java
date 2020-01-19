@@ -27,4 +27,9 @@ public class UsersRepository {
         users.setPassword(UUID.randomUUID().toString());
         return usersDao.insert(users);
     }
+
+    int[] batchInsert(List<Users> usersList) {
+        usersList.forEach(e -> e.setPassword(UUID.randomUUID().toString()));
+        return usersDao.batchInsert(usersList);
+    }
 }

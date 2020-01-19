@@ -5,6 +5,7 @@ grant all privileges on database demo to user1;
 CREATE TABLE users(
     id        bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     password  character varying(1000) NOT NULL,
-    name      character varying(1000) NOT NULL
+    name      character varying(1000) NOT NULL,
+    version   integer NOT NULL
 );
 ALTER TABLE public.users OWNER TO user1;

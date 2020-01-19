@@ -24,6 +24,12 @@ public class UsersController {
         usersService.add(usersDto);
     }
 
+    @PostMapping("/add/list")
+    @Transactional
+    public void addList(@RequestBody List<UsersDto> usersDtoList) {
+        usersService.addList(usersDtoList);
+    }
+
     @GetMapping("/auth")
     void auth(@RequestHeader("Authorization") String authorization) {
         usersService.auth(authorization);

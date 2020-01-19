@@ -13,5 +13,7 @@ public class UsersDto {
 
     private String name;
 
+    private BigDecimal version;
+
     private String biko;
 }
