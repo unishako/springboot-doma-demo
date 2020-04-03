@@ -23,7 +23,7 @@ public class UsersService {
     }
 
     void addList(List<UsersDto> usersDtoList) {
-        int i[] = usersRepository.batchInsert(usersDtoList);
+        int[] i = usersRepository.batchInsert(usersDtoList);
         log.info("結果=" + i);
     }
 
